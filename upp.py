@@ -1,0 +1,12 @@
+name=input('Enter your name : ')
+print(name.upper())
+print(name.lower())
+print(len(name))
+print('Capitalize = ', name.capitalize())
+print('Casefold = ', name.casefold())
+print('Returns centered string  = ', name.center(50))
+print('Count of occurence q = ', name.count('q'))
+print('Encoded string = ', name.encode())
+print('Ends with = ', name.endswith('P'))
+print('Find postion of character or string = ', name.find('t'))
+ 
