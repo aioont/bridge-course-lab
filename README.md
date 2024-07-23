@@ -21,4 +21,24 @@ for i in range(n):
       print("*", end=' ')  
    print()
 ```   
+
+```
+ip = "aabcccccaaa"
+res = []
+letter = ip[0]
+count = 0
+
+for i in ip:
+    if i == letter:
+        count += 1
+    else:
+        res.append(letter + str(count))
+        letter = i
+        count = 1
+
+res.append(letter + str(count))  
+
+compressed_string = ''.join(res)
+print(compressed_string) 
+```
    
