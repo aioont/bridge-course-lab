@@ -125,3 +125,82 @@ class Solution:
         return x
         
 ```
+
+
+```
+3. Longest Substring Without Repeating Characters
+Solved
+Medium
+Topics
+Companies
+Hint
+Given a string s, find the length of the longest 
+substring
+ without repeating characters.
+
+ 
+
+Example 1:
+
+Input: s = "abcabcbb"
+Output: 3
+Explanation: The answer is "abc", with the length of 3.
+
+
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        char_set = set()  # Set to store characters in the current window
+        left = 0  # Left pointer of the sliding window
+        max_length = 0  # Variable to store the maximum length of substring found
+
+        for right in range(len(s)):
+            # If the character is already in the set, remove characters from the left
+            while s[right] in char_set:
+                char_set.remove(s[left])
+                left += 1
+            
+            # Add the current character to the set
+            char_set.add(s[right])
+            
+            # Update the maximum length
+            max_length = max(max_length, right - left + 1)
+        
+        return max_length
+```
+
+
+
+```
+3. Longest Substring Without Repeating Characters
+
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        if len(set(s)) == 1 and len(s) == 1:
+            return 1
+
+        uni = []
+        max_len = [0]
+        max_len2 = 0
+
+        for i in s:
+            if i not in uni:
+                uni.append(i)
+                print(":", uni)
+                max_len2 = len(uni)
+                print("max_len2:", max_len2)
+            else:
+                max_len.append(len(uni))
+                print("max_len:", max_len)
+
+                # Reset the `uni` list to exclude the first occurrence of the duplicate character
+                uni = uni[uni.index(i) + 1:]
+                uni.append(i)
+                print("uni reset:", uni)
+
+            max_len.append(len(uni))
+
+        # Determine the maximum length of the unique substrings
+        x = max(max_len) if max(max_len) > max_len2 else max_len2
+
+        return x
+```
