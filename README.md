@@ -204,3 +204,71 @@ class Solution:
 
         return x
 ```
+
+```
+def first_unique_char(s):
+    # Dictionary to store the count of each character
+    d = {}
+
+    # First pass to count the occurrences of each character
+    for char in s:
+        d[char] = d.get(char, 0) + 1
+
+    # Second pass to find the first non-repeating character
+    for i, char in enumerate(s):
+        if d[char] == 1:
+            return i
+
+    return -1
+
+# Example usage
+s1 = "leetcode"
+s2 = "loveleetcode"
+s3 = "aabb"
+
+print(first_unique_char(s1))  # Output: 0
+print(first_unique_char(s2))  # Output: 2
+print(first_unique_char(s3))  # Output: -1
+
+
+
+
+from collections import Counter
+
+class Solution:
+    def firstUniqChar(self, s: str) -> int:
+        # Create a counter object to count the frequency of each character in the string
+        char_count = Counter(s)
+      
+        # Iterate over the characters in the string with their indices
+        for index, char in enumerate(s):
+            # If the character's count is 1, it is unique
+            if char_count[char] == 1:
+                # Return the current index as the first unique character's position
+                return index
+      
+        # If no unique character is found, return -1
+        return -1
+
+
+```
+
+```
+
+242. Valid Anagram
+class Solution:
+    def isAnagram(self, s: str, t: str) -> bool:
+        d1={}
+        d2={}
+        for char in s:
+            d1[char] = d1.get(char, 0)+1
+        print(d1)
+        for char in t:
+            d2[char] = d2.get(char, 0)+1 
+        print(d2)
+
+        if d1==d2: 
+            return True
+        else:
+            return False
+```
