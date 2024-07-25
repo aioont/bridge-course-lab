@@ -324,3 +324,15 @@ class MyQueue:
     def empty(self) -> bool:
         return not self.a and not self.b
 ```
+
+
+
+```
+215. Kth Largest Element in an Array
+
+class Solution:
+    def findKthLargest(self, nums: List[int], k: int) -> int:
+        nums.sort(reverse=True)
+        return nums[k-1]
+        
+```
