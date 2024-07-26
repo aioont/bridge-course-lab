@@ -336,3 +336,166 @@ class Solution:
         return nums[k-1]
         
 ```
+```
+Stack
+
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+class Stack:
+    def __init__(self):
+        self.top = None
+        self.size = 0
+
+    def push(self, item):
+        """Add an item to the top of the stack."""
+        new_node = Node(item)
+        new_node.next = self.top
+        self.top = new_node
+        self.size += 1
+
+    def pop(self):
+        """Remove and return the top item from the stack."""
+        if self.is_empty():
+            raise Exception("Stack is empty")
+        item = self.top.data
+        self.top = self.top.next
+        self.size -= 1
+        return item
+
+    def peek(self):
+        """Return the top item from the stack without removing it."""
+        if self.is_empty():
+            raise Exception("Stack is empty")
+        return self.top.data
+
+    def is_empty(self):
+        """Check if the stack is empty."""
+        return self.size == 0
+
+    def get_size(self):
+        """Return the number of items in the stack."""
+        return self.size
+
+    def __str__(self):
+        """Return a string representation of the stack."""
+        current = self.top
+        items = []
+        while current:
+            items.append(str(current.data))
+            current = current.next
+        return " -> ".join(items)
+
+# Example usage
+if __name__ == "__main__":
+    stack = Stack()
+
+    # Push some items onto the stack
+    stack.push(1)
+    stack.push(2)
+    stack.push(3)
+
+    print("Stack:", stack)
+    print("Size:", stack.get_size())
+    print("Top item:", stack.peek())
+
+    # Pop an item
+    popped_item = stack.pop()
+    print("Popped:", popped_item)
+    print("Stack after pop:", stack)
+
+    # Push more items
+    stack.push(4)
+    stack.push(5)
+
+    print("Final stack:", stack)
+```
+
+
+
+```
+Queue
+
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+class Queue:
+    def __init__(self):
+        self.front = None
+        self.rear = None
+        self.size = 0
+
+    def enqueue(self, item):
+        """Add an item to the rear of the queue."""
+        new_node = Node(item)
+        if self.is_empty():
+            self.front = self.rear = new_node
+        else:
+            self.rear.next = new_node
+            self.rear = new_node
+        self.size += 1
+
+    def dequeue(self):
+        """Remove and return the front item from the queue."""
+        if self.is_empty():
+            raise Exception("Queue is empty")
+        item = self.front.data
+        self.front = self.front.next
+        if self.front is None:
+            self.rear = None
+        self.size -= 1
+        return item
+
+    def peek(self):
+        """Return the front item from the queue without removing it."""
+        if self.is_empty():
+            raise Exception("Queue is empty")
+        return self.front.data
+
+    def is_empty(self):
+        """Check if the queue is empty."""
+        return self.size == 0
+
+    def get_size(self):
+        """Return the number of items in the queue."""
+        return self.size
+
+    def __str__(self):
+        """Return a string representation of the queue."""
+        current = self.front
+        items = []
+        while current:
+            items.append(str(current.data))
+            current = current.next
+        return " -> ".join(items)
+
+# Example usage
+if __name__ == "__main__":
+    queue = Queue()
+
+    # Enqueue some items
+    queue.enqueue(1)
+    queue.enqueue(2)
+    queue.enqueue(3)
+
+    print("Queue:", queue)
+    print("Size:", queue.get_size())
+    print("Front item:", queue.peek())
+
+    # Dequeue an item
+    dequeued_item = queue.dequeue()
+    print("Dequeued:", dequeued_item)
+    print("Queue after dequeue:", queue)
+
+    # Enqueue more items
+    queue.enqueue(4)
+    queue.enqueue(5)
+
+    print("Final queue:", queue)
+
+
+```
